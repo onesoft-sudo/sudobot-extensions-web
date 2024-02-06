@@ -1,19 +1,20 @@
-import ImageWithSkeleton from "@/components/Image/ImageWithSkeleton";
-import Navbar from "@/components/Navigation/Navbar";
 import sudobotLogo from "@/images/sudobot-v8.png";
+import styles from "@/styles/Home.module.css";
+import Image from "next/image";
 
 export default function Home() {
     return (
         <main className="mb-5">
-            <div className="bg-white dark:bg-[rgba(255,255,255,0.1)] dark:shadow-gray-700 pb-5">
-                <Navbar />
+            <div className={`bg-white dark:shadow-gray-700 pb-5 ${styles.top}`}>
                 <div className="md:flex justify-center items-center pt-5">
                     <div className="md:w-[50vw] lg:w-[40vw] xl:w-[30vw]">
-                        <ImageWithSkeleton
+                        <Image
                             src={sudobotLogo}
                             alt="SudoBot Logo"
                             width={512}
                             height={512}
+                            blurDataURL={sudobotLogo.blurDataURL}
+                            placeholder="empty"
                             className="w-[100%] md:w-[50vw] lg:w-[40vw] xl:w-[30vw] block"
                         />
                     </div>

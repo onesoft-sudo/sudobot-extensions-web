@@ -1,15 +1,24 @@
 .skeleton {
     animation: skeleton 2.5s linear infinite;
     border-radius: 5px;
+    --start: #000;
+    --stop: #333;
 }
 
 @keyframes skeleton {
     100%,
     0% {
-        background: #000;
+        background: var(--start);
     }
 
     50% {
-        background: #333;
+        background: var(--stop);
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    .skeleton {
+        --start: #eee;
+        --stop: #ddd;
     }
 }
