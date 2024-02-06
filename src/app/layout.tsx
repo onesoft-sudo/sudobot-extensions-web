@@ -1,4 +1,6 @@
 import Navbar from "@/components/Navbar/Navbar";
+import RouteChangeProgress from "@/components/Routing/RouteChangeProgress";
+import { RouterContextProvider } from "@/contexts/RouterContext";
 import "@/styles/globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -19,8 +21,11 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={inter.className}>
-                <Navbar />
-                {children}
+                <RouterContextProvider>
+                    <RouteChangeProgress />
+                    <Navbar />
+                    {children}
+                </RouterContextProvider>
             </body>
         </html>
     );

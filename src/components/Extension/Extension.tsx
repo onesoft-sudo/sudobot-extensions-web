@@ -1,6 +1,6 @@
+import Link from "@/components/Routing/Link";
 import { APIExtension } from "@/types/APIExtension";
 import { Tooltip } from "@mui/material";
-import Link from "next/link";
 import { FC } from "react";
 import { MdAccountCircle, MdCheckCircle, MdDownload } from "react-icons/md";
 import ImageWithSkeleton from "../Image/ImageWithSkeleton";
@@ -23,19 +23,16 @@ const Extension: FC<ExtensionProps> = ({ extension }) => {
         >
             <div className="flex items-center gap-3">
                 <div>
-                    {extension.icon ? (
-                        <ImageWithSkeleton
-                            component="img"
-                            src={extension.icon}
-                            alt={`Icon of ${extension.name} (${extension.id})`}
-                            height={200}
-                            width={200}
-                            style={{ height: "4.5em", width: "4.5em" }}
-                            className="rounded"
-                        />
-                    ) : (
-                        <div className="h-[4.5em] w-[4.5em] bg-[#333] rounded"></div>
-                    )}
+                    <ImageWithSkeleton
+                        component="img"
+                        src={extension.icon ?? ""}
+                        skeleton={!extension.icon}
+                        alt={`Icon of ${extension.name} (${extension.id})`}
+                        height={200}
+                        width={200}
+                        style={{ height: "4.5em", width: "4.5em" }}
+                        className="rounded"
+                    />
                 </div>
                 <div>
                     <div className="text-xl lg:text-2xl">{extension.name}</div>

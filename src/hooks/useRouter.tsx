@@ -1,20 +1,17 @@
 "use client";
 
-import { useRouterContext } from "@/contexts/RouterContext";
+import { useRouterEvents } from "@/contexts/RouterContext";
 import { useRouter as useNextRouter } from "next/navigation";
 
 export default function useRouter() {
-    const { isChanging, setIsChanging } = useRouterContext();
+    const events = useRouterEvents();
     const router = useNextRouter();
 
     return {
         prefetch: router.prefetch,
         back: router.back,
         push(href, options) {
-            if (!isChanging) {
-                setIsChanging(true);
-            }
-
+            events?.emit("routeChangeStart");
             router.push(href, options);
         },
         forward: router.forward,

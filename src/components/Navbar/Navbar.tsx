@@ -2,8 +2,8 @@ import { pages } from "@/config/pages";
 import logo from "@/images/sudobot.png";
 import styles from "@/styles/Navbar.module.css";
 import Image from "next/image";
-import Link from "next/link";
 import { HiArrowTopRightOnSquare } from "react-icons/hi2";
+import Link from "../Routing/Link";
 import NavbarClientSide from "./NavbarClientSide";
 
 export default function Navbar() {

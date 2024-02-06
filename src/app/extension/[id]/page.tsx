@@ -15,6 +15,7 @@ async function getExtensionInformation(id: string): Promise<APIExtension> {
 
 export default async function ExtensionPage({ params }: ServerSidePageProps) {
     const { id } = params;
+    await new Promise((resolve) => setTimeout(resolve, 4000));
     return (
         <main>
             <h1></h1>
