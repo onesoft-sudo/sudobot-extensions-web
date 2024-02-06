@@ -1,5 +1,7 @@
+import ExtensionList from "@/components/Extension/ExtensionList";
 import sudobotLogo from "@/images/sudobot-v8.png";
 import styles from "@/styles/Home.module.css";
+import { Container } from "@mui/material";
 import Image from "next/image";
 
 export default function Home() {
@@ -28,6 +30,15 @@ export default function Home() {
                     SudoBot.
                 </p>
             </div>
+
+            <br />
+            <br />
+
+            <Container>
+                <div>
+                    <ExtensionList />
+                </div>
+            </Container>
         </main>
     );
 }

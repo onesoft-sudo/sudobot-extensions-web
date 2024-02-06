@@ -4,15 +4,27 @@ import styles from "@/styles/ImageWithSkeleton.module.css";
 import Image from "next/image";
 import { ComponentProps, FC, useState } from "react";
 
-type ImageWithSkeletonProps = ComponentProps<typeof Image>;
+type ImageWithSkeletonProps = ComponentProps<typeof Image> & {
+    component?: FC | "img";
+};
 
-const ImageWithSkeleton: FC<ImageWithSkeletonProps> = ({ ...imageProps }) => {
+const ImageWithSkeleton: FC<ImageWithSkeletonProps> = ({
+    component = Image,
+    ...imageProps
+}) => {
     const [isLoaded, setIsLoaded] = useState(false);
     const { onLoad, ...finalImageProps } = imageProps;
+    const Component = component as FC<any>;
 
     return (
-        <div className="relative">
-            <Image
+        <div
+            className="relative"
+            style={{
+                height: imageProps.style?.height ?? imageProps.height,
+                width: imageProps.style?.width ?? imageProps.width,
+            }}
+        >
+            <Component
                 onLoad={() => {
                     setIsLoaded(true);
                 }}
