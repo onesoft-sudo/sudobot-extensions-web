@@ -16,7 +16,8 @@ export default function NavbarClientSide() {
                 <>
                     <div className="mobile order-first">
                         <Button
-                            style={{ minWidth: 0, color: "white" }}
+                            style={{ minWidth: 0 }}
+                            className="!text-black dark:!text-white"
                             onClick={() => setIsOpen(true)}
                         >
                             <MdMenu size={23} />
@@ -26,7 +27,10 @@ export default function NavbarClientSide() {
                     <Drawer isOpen={isOpen} onClose={() => setIsOpen(false)} />
 
                     <div className="mobile order-last">
-                        <Button style={{ minWidth: 0, color: "white" }}>
+                        <Button
+                            style={{ minWidth: 0 }}
+                            className="!text-black dark:!text-white"
+                        >
                             <MdSearch size={23} />
                         </Button>
                     </div>

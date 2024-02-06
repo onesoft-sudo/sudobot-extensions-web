@@ -1,5 +1,4 @@
 import { pages } from "@/config/pages";
-import useActualPathname from "@/hooks/useActualPathname";
 import styles from "@/styles/Drawer.module.css";
 import { Button } from "@mui/material";
 import { HiArrowTopRightOnSquare } from "react-icons/hi2";
@@ -12,8 +11,6 @@ export default function Drawer({
     onClose: () => unknown;
     isOpen: boolean;
 }) {
-    const pathname = useActualPathname();
-
     return (
         <>
             <aside
@@ -22,8 +19,16 @@ export default function Drawer({
                 }`}
             >
                 <div className={styles.controls}>
+                    <div className="ml-2 flex flex-col items-center leading-[1px]">
+                        <div className="text-lg">SudoBot</div>
+                        <div className="[letter-spacing:0.1em] text-xs text-center text-[#999] pl-[2px] -mt-1">
+                            Extensions
+                        </div>
+                    </div>
+
                     <Button
-                        style={{ minWidth: 0, color: "white" }}
+                        style={{ minWidth: 0 }}
+                        className="!text-black dark:!text-white"
                         onClick={onClose}
                     >
                         <MdClose size={20} />
