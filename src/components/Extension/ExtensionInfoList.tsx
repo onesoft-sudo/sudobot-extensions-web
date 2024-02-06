@@ -16,19 +16,16 @@ import ExtensionAuthor from "./ExtensionAuthor";
 
 interface ExtensionInfoListProps {
     extension: APIExtension;
+    className?: string;
 }
 
-const ExtensionInfoList: FC<ExtensionInfoListProps> = ({ extension }) => {
+const ExtensionInfoList: FC<ExtensionInfoListProps> = ({
+    extension,
+    className,
+}) => {
     return (
-        <div>
-            <h1 className="text-2xl md:text-3xl lg:text-4xl">
-                {extension.name}
-            </h1>
+        <div className={className}>
             <ul className="list-none text-[#555] dark:text-[#999]">
-                <li className="">
-                    <code className="font-mono">{extension.id}</code>
-                </li>
-
                 <li className="mt-2 flex items-center gap-[0.4em]">
                     <Tooltip title="Author">
                         <MdAccountCircle className="inline" />

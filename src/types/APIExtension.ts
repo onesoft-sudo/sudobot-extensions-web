@@ -16,4 +16,6 @@ export interface APIExtension {
     issues?: string;
     security: "safe" | "unsafe" | "unknown";
     lastUpdated: Date;
+    readmeFileName?: string;
+    readmeContents?: string;
 }
