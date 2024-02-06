@@ -1,5 +1,6 @@
 import Link from "@/components/Routing/Link";
 import { APIExtension } from "@/types/APIExtension";
+import { numberFormatter } from "@/utils/formatters";
 import { Tooltip } from "@mui/material";
 import { FC } from "react";
 import { MdAccountCircle, MdCheckCircle, MdDownload } from "react-icons/md";
@@ -9,11 +10,6 @@ import ExtensionAuthor from "./ExtensionAuthor";
 interface ExtensionProps {
     extension: APIExtension;
 }
-
-const numberFormatter = new Intl.NumberFormat("en-US", {
-    compactDisplay: "short",
-    notation: "compact",
-});
 
 const Extension: FC<ExtensionProps> = ({ extension }) => {
     return (

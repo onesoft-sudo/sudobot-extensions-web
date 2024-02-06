@@ -6,7 +6,7 @@ async function getExtensionIndex(): Promise<APIExtension[]> {
     // FIXME
     return [
         {
-            id: "antirickroll",
+            id: "org.onesoftnet.antirickroll",
             downloads: 5,
             name: "Anti RickRoll",
             description: "Deletes messages containing rickroll links.",
@@ -15,9 +15,12 @@ async function getExtensionIndex(): Promise<APIExtension[]> {
                 isVerified: true,
             },
             icon: "https://loremflickr.com/200/200?i=1",
+            license: "GPL-3.0-or-later",
+            licenseURL: "https://spdx.org/licenses/GPL-3.0-or-later.html",
+            security: "safe",
         },
         {
-            id: "antirickroll2",
+            id: "org.onesoftnet.antirickroll2",
             downloads: 156666,
             name: "Anti RickRoll 2",
             description: "lorem50  lmao",
@@ -26,6 +29,9 @@ async function getExtensionIndex(): Promise<APIExtension[]> {
                 isVerified: false,
             },
             icon: "https://loremflickr.com/200/200?i=2",
+            license: "GPL-3.0-or-later",
+            licenseURL: "https://spdx.org/licenses/GPL-3.0-or-later.html",
+            security: "safe",
         },
     ];
 }

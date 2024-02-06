@@ -9,4 +9,11 @@ export interface APIExtension {
         isVerified?: boolean;
         github?: string;
     };
+    license: string;
+    licenseURL: string;
+    homepage?: string;
+    repository?: string;
+    issues?: string;
+    security: "safe" | "unsafe" | "unknown";
+    lastUpdated: Date;
 }
