@@ -1,4 +1,13 @@
-# 0.2.0 (2024-02-06)
+# [0.3.0](https://github.com/onesoft-sudo/sudobot-extensions-web/compare/v0.2.0...v0.3.0) (2024-02-06)
+
+
+### Features
+
+* finish extension page ([5b377c3](https://github.com/onesoft-sudo/sudobot-extensions-web/commit/5b377c35ac0b4cf189d5942cb0a700654fcb3cde))
+
+
+
+# [0.2.0](https://github.com/onesoft-sudo/sudobot-extensions-web/compare/45c4427012f9cd0e4ad1835651b1749cc53a3f6a...v0.2.0) (2024-02-06)
 
 
 ### Features
