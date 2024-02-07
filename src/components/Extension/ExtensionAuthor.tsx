@@ -1,6 +1,7 @@
 "use client";
 
 import { APIExtension } from "@/types/APIExtension";
+import { useRouter } from "next/navigation";
 import { FC } from "react";
 
 interface ExtensionAuthorProps {
@@ -8,6 +9,8 @@ interface ExtensionAuthorProps {
 }
 
 const ExtensionAuthor: FC<ExtensionAuthorProps> = ({ author }) => {
+    const router = useRouter();
+
     return (
         <span
             className={`text-black dark:text-white ${
@@ -15,7 +18,7 @@ const ExtensionAuthor: FC<ExtensionAuthorProps> = ({ author }) => {
             }`}
             onClick={
                 author?.github
-                    ? () => window.location.replace(author?.github!)
+                    ? () => router.replace(author?.github!)
                     : undefined
             }
         >

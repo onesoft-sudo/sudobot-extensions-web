@@ -12,6 +12,7 @@ const darkTheme = createTheme({
 });
 export default function MUIProvider({ children }: PropsWithChildren) {
     const colorScheme = useColorScheme();
+
     return (
         <ThemeProvider theme={colorScheme === "light" ? lightTheme : darkTheme}>
             {children}

@@ -6,7 +6,7 @@ async function getExtensionIndex(): Promise<APIExtension[]> {
     // FIXME
     return [
         {
-            id: "org.onesoftnet.antirickroll",
+            id: "org.onesoftnet.sbext.antirickroll",
             downloads: 5,
             name: "Anti RickRoll",
             description: "Deletes messages containing rickroll links.",
