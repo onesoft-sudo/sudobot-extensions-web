@@ -15,7 +15,7 @@ export default function Navbar() {
                 <span className="desktop">SudoBot Extensions</span>
             </a>
 
-            <ul className={`${styles.ul} desktop`}>
+            <ul className={`${styles.ul} hidden md:inline-block`}>
                 {pages.map((link) => {
                     const LinkComponent = link.url.startsWith("/") ? Link : "a";
                     const externalLink = /^http(s?):\/\//gi.test(link.url);
