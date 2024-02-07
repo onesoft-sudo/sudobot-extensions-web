@@ -1,3 +1,12 @@
+## [0.4.2](https://github.com/onesoft-sudo/sudobot-extensions-web/compare/v0.4.1...v0.4.2) (2024-02-07)
+
+
+### Bug Fixes
+
+* image skeleton component ([a4085ae](https://github.com/onesoft-sudo/sudobot-extensions-web/commit/a4085ae7bff455fe6ca351b684e91a2053fecdfa))
+
+
+
 ## [0.4.1](https://github.com/onesoft-sudo/sudobot-extensions-web/compare/v0.4.0...v0.4.1) (2024-02-07)
 
 
