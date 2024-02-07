@@ -1,3 +1,12 @@
+## [0.4.4](https://github.com/onesoft-sudo/sudobot-extensions-web/compare/v0.4.3...v0.4.4) (2024-02-07)
+
+
+### Bug Fixes
+
+* navbar styles ([629aae1](https://github.com/onesoft-sudo/sudobot-extensions-web/commit/629aae1642a70f16873710c921ab71decc952830))
+
+
+
 ## [0.4.3](https://github.com/onesoft-sudo/sudobot-extensions-web/compare/v0.4.2...v0.4.3) (2024-02-07)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * **extensions:view:** make the page dynamic (ISR) ([a8cca97](https://github.com/onesoft-sudo/sudobot-extensions-web/commit/a8cca9762a2d9a0d942d18e39ad0d63ab21787f5))
-
-
-
-# [0.3.0](https://github.com/onesoft-sudo/sudobot-extensions-web/compare/v0.2.0...v0.3.0) (2024-02-06)
-
-
-### Features
-
-* finish extension page ([5b377c3](https://github.com/onesoft-sudo/sudobot-extensions-web/commit/5b377c35ac0b4cf189d5942cb0a700654fcb3cde))
 
 
 
