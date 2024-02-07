@@ -27,7 +27,9 @@ const ImageWithSkeleton: FC<ImageWithSkeletonProps> = ({
     const Icon = icon ?? MdQuestionMark;
 
     useEffect(() => {
-        if (ref.current?.complete) {
+        if (ref.current?.naturalWidth === 0) {
+            setStatus("failure");
+        } else if (ref.current?.complete) {
             setStatus("success");
         }
     }, []);
@@ -44,6 +46,11 @@ const ImageWithSkeleton: FC<ImageWithSkeletonProps> = ({
                 <Component
                     ref={ref}
                     onLoad={() => {
+                        if (ref.current?.naturalWidth === 0) {
+                            setStatus("failure");
+                            return;
+                        }
+
                         setStatus("success");
                     }}
                     onError={() => {
