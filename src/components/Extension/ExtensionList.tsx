@@ -33,7 +33,7 @@ async function getExtensionIndex(): Promise<APIExtension[]> {
             licenseURL: "https://spdx.org/licenses/GPL-3.0-or-later.html",
             security: "safe",
         },
-    ];
+    ] as TODO;
 }
 
 const ExtensionList: FC = async () => {
