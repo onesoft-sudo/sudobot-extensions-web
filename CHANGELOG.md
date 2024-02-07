@@ -1,3 +1,12 @@
+## [0.4.1](https://github.com/onesoft-sudo/sudobot-extensions-web/compare/v0.4.0...v0.4.1) (2024-02-07)
+
+
+### Bug Fixes
+
+* type errors ([13f855a](https://github.com/onesoft-sudo/sudobot-extensions-web/commit/13f855a6d954b43b8f1ad0574c6da8f9822d4bd6))
+
+
+
 # [0.4.0](https://github.com/onesoft-sudo/sudobot-extensions-web/compare/v0.3.0...v0.4.0) (2024-02-07)
 
 
