@@ -19,7 +19,7 @@ const ImageWithSkeleton: FC<ImageWithSkeletonProps> = ({
     ...imageProps
 }) => {
     const [status, setStatus] = useState<"loading" | "success" | "failure">(
-        skeleton ? "failure" : "loading"
+        skeleton || !imageProps.src ? "failure" : "loading"
     );
     const { onLoad, ...finalImageProps } = imageProps;
     const Component = component as FC<any>;
