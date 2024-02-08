@@ -4,8 +4,8 @@ import { numberFormatter } from "@/utils/formatters";
 import { Tooltip } from "@mui/material";
 import { FC } from "react";
 import { MdAccountCircle, MdCheckCircle, MdDownload } from "react-icons/md";
-import ImageWithSkeleton from "../Image/ImageWithSkeleton";
 import ExtensionAuthor from "./ExtensionAuthor";
+import ExtensionIconClient from "./ExtensionIconClient";
 
 interface ExtensionProps {
     extension: APIExtension;
@@ -19,16 +19,7 @@ const Extension: FC<ExtensionProps> = ({ extension }) => {
         >
             <div className="flex items-center gap-3">
                 <div>
-                    <ImageWithSkeleton
-                        component="img"
-                        src={extension.icon ?? ""}
-                        skeleton={!extension.icon}
-                        alt={`Icon of ${extension.name} (${extension.id})`}
-                        height={200}
-                        width={200}
-                        style={{ height: "4.5em", width: "4.5em" }}
-                        className="rounded"
-                    />
+                    <ExtensionIconClient extension={extension} />
                 </div>
                 <div>
                     <div className="text-xl lg:text-2xl">{extension.name}</div>

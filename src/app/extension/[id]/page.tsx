@@ -1,16 +1,20 @@
+import ExtensionAuthor from "@/components/Extension/ExtensionAuthor";
 import ExtensionControls from "@/components/Extension/ExtensionControls";
+import ExtensionIcon from "@/components/Extension/ExtensionIcon";
 import ExtensionInfoList from "@/components/Extension/ExtensionInfoList";
+import ExtensionInfoMobileList from "@/components/Extension/ExtensionInfoListMobile";
 import ExtensionSecurity from "@/components/Extension/ExtensionSecurity";
-import ExtensionIcon from "@/components/Extension/Extensionicon";
 import { Divider } from "@/components/Layout/Divider";
 import { INDEX_URL } from "@/config/urls";
 import { getDB } from "@/firebase/app";
 import { APIExtension } from "@/types/APIExtension";
 import { ServerSidePageProps } from "@/types/ServerSidePageProps";
+import { Tooltip } from "@mui/material";
 import { Metadata } from "next";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { notFound } from "next/navigation";
 import { HiShieldCheck } from "react-icons/hi2";
+import { MdCheckCircle } from "react-icons/md";
 
 export const revalidate = 3600;
 
@@ -122,11 +126,37 @@ export default async function ExtensionPage({ params }: ServerSidePageProps) {
                                     {extension.id}
                                 </code>
                             </p>
-                            {extension.security === "safe" && (
-                                <p className="flex items-center gap-1 mt-1 text-green-500 dark:text-green-400 text-sm md:text-base break-all pr-2 max-w-[100%]">
-                                    <HiShieldCheck className="inline" /> Secure
-                                </p>
-                            )}
+                            <div className="flex items-center gap-1 mt-1 text-sm md:text-base break-all pr-2 max-w-[100%]">
+                                <ExtensionAuthor
+                                    className="md:hidden"
+                                    author={extension.author}
+                                />{" "}
+                                {extension.author?.isVerified && (
+                                    <Tooltip
+                                        title={
+                                            <span className="flex items-center gap-1">
+                                                <MdCheckCircle className="text-green-500 dark:text-green-400" />
+                                                This author is verified by The
+                                                SudoBot Developers.
+                                            </span>
+                                        }
+                                        className="md:hidden"
+                                    >
+                                        <MdCheckCircle />
+                                    </Tooltip>
+                                )}
+                                {extension.security === "safe" && (
+                                    <>
+                                        <span className="px-2 text-[#555] dark:text-[#999] md:hidden">
+                                            |
+                                        </span>
+                                        <span className="text-green-500 dark:text-green-400 flex items-center gap-1">
+                                            <HiShieldCheck className="inline" />{" "}
+                                            Secure
+                                        </span>
+                                    </>
+                                )}
+                            </div>
 
                             <ExtensionInfoList
                                 extension={extension}
@@ -134,7 +164,7 @@ export default async function ExtensionPage({ params }: ServerSidePageProps) {
                             />
                         </div>
                     </div>
-                    <ExtensionInfoList
+                    <ExtensionInfoMobileList
                         extension={extension}
                         className="md:hidden"
                     />

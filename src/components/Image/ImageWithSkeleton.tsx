@@ -29,10 +29,11 @@ const ImageWithSkeleton: FC<ImageWithSkeletonProps> = ({
     useEffect(() => {
         if (ref.current?.naturalWidth === 0) {
             setStatus("failure");
-        } else if (ref.current?.complete) {
+        }
+        if (ref.current?.complete) {
             setStatus("success");
         }
-    }, []);
+    }, [ref]);
 
     return (
         <div

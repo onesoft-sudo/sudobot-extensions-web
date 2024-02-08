@@ -6,6 +6,7 @@ import ImageWithSkeleton from "../Image/ImageWithSkeleton";
 
 const ExtensionIcon = ({ icon }: { icon: string | undefined | null }) => {
     const isDesktop = useIsDesktop();
+
     return (
         <ImageWithSkeleton
             icon={HiOutlineCube}
