@@ -1,3 +1,12 @@
+# [0.5.0](https://github.com/onesoft-sudo/sudobot-extensions-web/compare/v0.4.6...v0.5.0) (2024-02-08)
+
+
+### Features
+
+* extension downloads ([57e35c5](https://github.com/onesoft-sudo/sudobot-extensions-web/commit/57e35c5078aea79932bc9371682b8af76064e0cf))
+
+
+
 ## [0.4.6](https://github.com/onesoft-sudo/sudobot-extensions-web/compare/v0.4.5...v0.4.6) (2024-02-08)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * navbar desktop showing up on mobile ([d8fd0ce](https://github.com/onesoft-sudo/sudobot-extensions-web/commit/d8fd0cefd0c532b2a87c9b8d97c5c0d6b708a159))
-
-
-
-## [0.4.2](https://github.com/onesoft-sudo/sudobot-extensions-web/compare/v0.4.1...v0.4.2) (2024-02-07)
-
-
-### Bug Fixes
-
-* image skeleton component ([a4085ae](https://github.com/onesoft-sudo/sudobot-extensions-web/commit/a4085ae7bff455fe6ca351b684e91a2053fecdfa))
 
 
 
