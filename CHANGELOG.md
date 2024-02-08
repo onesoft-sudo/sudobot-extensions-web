@@ -1,3 +1,12 @@
+## [0.6.2](https://github.com/onesoft-sudo/sudobot-extensions-web/compare/v0.6.1...v0.6.2) (2024-02-08)
+
+
+### Bug Fixes
+
+* **navbar:** weird behaviour on mobile ([ae47706](https://github.com/onesoft-sudo/sudobot-extensions-web/commit/ae47706aa1c3ba2093cab2d1310afc4959a5952f))
+
+
+
 ## [0.6.1](https://github.com/onesoft-sudo/sudobot-extensions-web/compare/v0.6.0...v0.6.1) (2024-02-08)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * final page fixups ([44fc33d](https://github.com/onesoft-sudo/sudobot-extensions-web/commit/44fc33df7a064569c70c175cc399c0f9fc40f4d7))
-
-
-
-## [0.4.5](https://github.com/onesoft-sudo/sudobot-extensions-web/compare/v0.4.4...v0.4.5) (2024-02-08)
-
-
-### Bug Fixes
-
-* mui issue with nextjs hydration ([69a2471](https://github.com/onesoft-sudo/sudobot-extensions-web/commit/69a2471ef13ee692b988e368147c5f8c5d172653))
 
 
 
