@@ -1,3 +1,12 @@
+## [0.4.5](https://github.com/onesoft-sudo/sudobot-extensions-web/compare/v0.4.4...v0.4.5) (2024-02-08)
+
+
+### Bug Fixes
+
+* mui issue with nextjs hydration ([69a2471](https://github.com/onesoft-sudo/sudobot-extensions-web/commit/69a2471ef13ee692b988e368147c5f8c5d172653))
+
+
+
 ## [0.4.4](https://github.com/onesoft-sudo/sudobot-extensions-web/compare/v0.4.3...v0.4.4) (2024-02-07)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * type errors ([13f855a](https://github.com/onesoft-sudo/sudobot-extensions-web/commit/13f855a6d954b43b8f1ad0574c6da8f9822d4bd6))
-
-
-
-# [0.4.0](https://github.com/onesoft-sudo/sudobot-extensions-web/compare/v0.3.0...v0.4.0) (2024-02-07)
-
-
-### Features
-
-* **extensions:view:** make the page dynamic (ISR) ([a8cca97](https://github.com/onesoft-sudo/sudobot-extensions-web/commit/a8cca9762a2d9a0d942d18e39ad0d63ab21787f5))
 
 
 
