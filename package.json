@@ -10,11 +10,13 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@emotion/cache": "^11.11.0",
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
     "@mdx-js/loader": "^3.0.0",
     "@mdx-js/react": "^3.0.0",
     "@mui/material": "^5.15.7",
+    "@mui/material-nextjs": "^5.15.7",
     "@next/mdx": "^14.1.0",
     "@types/mdx": "^2.0.11",
     "date-fns": "^3.3.1",

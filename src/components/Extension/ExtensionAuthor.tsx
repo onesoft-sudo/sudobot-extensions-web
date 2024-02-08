@@ -14,7 +14,7 @@ const ExtensionAuthor: FC<ExtensionAuthorProps> = ({ author }) => {
     return (
         <span
             className={`text-black dark:text-white ${
-                author?.github ? "hover:underline" : ""
+                author?.github ? "hover:underline cursor-pointer" : ""
             }`}
             onClick={
                 author?.github

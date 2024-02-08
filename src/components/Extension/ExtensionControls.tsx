@@ -1,7 +1,6 @@
-"use client";
-
-import Button from "@/components/Button/Button";
+// import Button from "@/components/Button/Button";
 import { APIExtension } from "@/types/APIExtension";
+import { Button } from "@mui/material";
 import { MdDownload } from "react-icons/md";
 import DeployedCodeUpdate from "../Icons/DeployedCodeUpdate";
 
@@ -19,13 +18,29 @@ export default function ExtensionControls({
                 </div>
             ) : (
                 <>
-                    <Button className="flex items-center gap-1 pr-5">
+                    {/* <Button className="flex items-center gap-1 pr-5">
                         <MdDownload className="inline" />
                         Download
                     </Button>
                     <div className="md:hidden pt-2"></div>
                     <Button className="flex items-center gap-1 pr-5">
                         <DeployedCodeUpdate />
+                        Install
+                    </Button> */}
+                    <Button
+                        sx={{ px: 3 }}
+                        className="!text-black dark:!text-white font-semibold"
+                        fullWidth
+                        startIcon={<MdDownload />}
+                    >
+                        Download
+                    </Button>
+                    <div className="md:hidden pt-2"></div>
+                    <Button
+                        sx={{ px: 1.5 }}
+                        fullWidth
+                        startIcon={<DeployedCodeUpdate />}
+                    >
                         Install
                     </Button>
                 </>

@@ -1,5 +1,6 @@
 import { APIExtension } from "@/types/APIExtension";
 import { numberFormatter } from "@/utils/formatters";
+import { Tooltip } from "@mui/material";
 import { formatDistanceToNowStrict } from "date-fns";
 import Link from "next/link";
 import { FC } from "react";
@@ -29,7 +30,17 @@ const ExtensionInfoList: FC<ExtensionInfoListProps> = ({
                     <MdAccountCircle className="inline" />
                     <ExtensionAuthor author={extension.author} />
                     {extension.author?.isVerified && (
-                        <MdCheckCircle className="inline" />
+                        <Tooltip
+                            title={
+                                <span className="flex items-center gap-1">
+                                    <MdCheckCircle className="text-green-500 dark:text-green-400" />
+                                    This author is verified by The SudoBot
+                                    Developers.
+                                </span>
+                            }
+                        >
+                            <MdCheckCircle />
+                        </Tooltip>
                     )}
                 </li>
 

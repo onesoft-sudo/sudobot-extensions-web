@@ -18,7 +18,7 @@ export default function RouteChangeProgress() {
 
     return (
         routeChanging && (
-            <div>
+            <div className="z-[100000] fixed top-0 left-0 w-[100svw]">
                 <LinearProgress />
             </div>
         )
