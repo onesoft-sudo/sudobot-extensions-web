@@ -4,6 +4,7 @@ import ExtensionDownloadModal from "@/components/Extension/ExtensionDownloadModa
 import ExtensionIcon from "@/components/Extension/ExtensionIcon";
 import ExtensionInfoList from "@/components/Extension/ExtensionInfoList";
 import ExtensionInfoMobileList from "@/components/Extension/ExtensionInfoListMobile";
+import ExtensionInstallModal from "@/components/Extension/ExtensionInstallModal";
 import ExtensionSecurity from "@/components/Extension/ExtensionSecurity";
 import { Divider } from "@/components/Layout/Divider";
 import { INDEX_URL } from "@/config/urls";
@@ -116,6 +117,7 @@ export default async function ExtensionPage({ params }: ServerSidePageProps) {
     return (
         <>
             <ExtensionDownloadModal extension={extension} />
+            <ExtensionInstallModal extension={extension} />
 
             <Container>
                 <main className="my-5 lg:my-10">

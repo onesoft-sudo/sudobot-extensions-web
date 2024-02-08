@@ -42,6 +42,12 @@ export default function ExtensionControls({
                         sx={{ px: 1.5 }}
                         fullWidth
                         startIcon={<DeployedCodeUpdate />}
+                        onClick={() =>
+                            setState((state) => ({
+                                ...state,
+                                installModalOpen: true,
+                            }))
+                        }
                     >
                         Install
                     </Button>
