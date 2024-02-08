@@ -1,5 +1,6 @@
 import ExtensionAuthor from "@/components/Extension/ExtensionAuthor";
 import ExtensionControls from "@/components/Extension/ExtensionControls";
+import ExtensionDownloadModal from "@/components/Extension/ExtensionDownloadModal";
 import ExtensionIcon from "@/components/Extension/ExtensionIcon";
 import ExtensionInfoList from "@/components/Extension/ExtensionInfoList";
 import ExtensionInfoMobileList from "@/components/Extension/ExtensionInfoListMobile";
@@ -9,7 +10,7 @@ import { INDEX_URL } from "@/config/urls";
 import { getDB } from "@/firebase/app";
 import { APIExtension } from "@/types/APIExtension";
 import { ServerSidePageProps } from "@/types/ServerSidePageProps";
-import { Tooltip } from "@mui/material";
+import { Container, Tooltip } from "@mui/material";
 import { Metadata } from "next";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { notFound } from "next/navigation";
@@ -81,6 +82,7 @@ async function getExtensionInformation(
                 : doc.updateTime!.toDate(),
         readmeFileName: extensionInfo.readmeFileName,
         readmeContents,
+        tarballs: extensionInfo.tarballs,
     };
 }
 
@@ -112,99 +114,103 @@ export default async function ExtensionPage({ params }: ServerSidePageProps) {
     }
 
     return (
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <main className="my-5 lg:my-10">
-                <div className="flex flex-col md:flex-row items-start justify-between gap-3 md:gap-5">
-                    <div className="flex items-start gap-3 md:gap-5 lg:gap-7">
-                        <ExtensionIcon icon={extension.icon} />
-                        <div>
-                            <h1 className="text-2xl md:text-3xl lg:text-4xl">
-                                {extension.name}
-                            </h1>
-                            <p className="text-[#555] dark:text-[#999] text-sm md:text-base break-all pr-2 max-w-[100%]">
-                                <code className="font-mono">
-                                    {extension.id}
-                                </code>
-                            </p>
-                            <div className="flex items-center gap-1 mt-1 text-sm md:text-base break-all pr-2 max-w-[100%]">
-                                <ExtensionAuthor
-                                    className="md:hidden"
-                                    author={extension.author}
-                                />{" "}
-                                {extension.author?.isVerified && (
-                                    <Tooltip
-                                        title={
-                                            <span className="flex items-center gap-1">
-                                                <MdCheckCircle className="text-green-500 dark:text-green-400" />
-                                                This author is verified by The
-                                                SudoBot Developers.
-                                            </span>
-                                        }
+        <>
+            <ExtensionDownloadModal extension={extension} />
+
+            <Container>
+                <main className="my-5 lg:my-10">
+                    <div className="flex flex-col md:flex-row items-start justify-between gap-3 md:gap-5">
+                        <div className="flex items-start gap-3 md:gap-5 lg:gap-7">
+                            <ExtensionIcon icon={extension.icon} />
+                            <div>
+                                <h1 className="text-2xl md:text-3xl lg:text-4xl">
+                                    {extension.name}
+                                </h1>
+                                <p className="text-[#555] dark:text-[#999] text-sm md:text-base break-all pr-2 max-w-[100%]">
+                                    <code className="font-mono">
+                                        {extension.id}
+                                    </code>
+                                </p>
+                                <div className="flex items-center gap-1 mt-1 text-sm md:text-base break-all pr-2 max-w-[100%]">
+                                    <ExtensionAuthor
                                         className="md:hidden"
-                                    >
-                                        <MdCheckCircle />
-                                    </Tooltip>
-                                )}
-                                {extension.security === "safe" && (
-                                    <>
-                                        <span className="px-2 text-[#555] dark:text-[#999] md:hidden">
-                                            |
-                                        </span>
-                                        <span className="text-green-500 dark:text-green-400 flex items-center gap-1">
-                                            <HiShieldCheck className="inline" />{" "}
-                                            Secure
-                                        </span>
-                                    </>
-                                )}
+                                        author={extension.author}
+                                    />{" "}
+                                    {extension.author?.isVerified && (
+                                        <Tooltip
+                                            title={
+                                                <span className="flex items-center gap-1">
+                                                    <MdCheckCircle className="text-green-500 dark:text-green-400" />
+                                                    This author is verified by
+                                                    The SudoBot Developers.
+                                                </span>
+                                            }
+                                            className="md:hidden"
+                                        >
+                                            <MdCheckCircle />
+                                        </Tooltip>
+                                    )}
+                                    {extension.security === "safe" && (
+                                        <>
+                                            <span className="px-2 text-[#555] dark:text-[#999] md:hidden">
+                                                |
+                                            </span>
+                                            <span className="text-green-500 dark:text-green-400 flex items-center gap-1">
+                                                <HiShieldCheck className="inline" />{" "}
+                                                Secure
+                                            </span>
+                                        </>
+                                    )}
+                                </div>
+
+                                <ExtensionInfoList
+                                    extension={extension}
+                                    className="hidden md:block"
+                                />
                             </div>
-
-                            <ExtensionInfoList
-                                extension={extension}
-                                className="hidden md:block"
-                            />
                         </div>
+                        <ExtensionInfoMobileList
+                            extension={extension}
+                            className="md:hidden"
+                        />
+                        <ExtensionControls extension={extension} />
                     </div>
-                    <ExtensionInfoMobileList
-                        extension={extension}
-                        className="md:hidden"
-                    />
-                    <ExtensionControls extension={extension} />
-                </div>
 
-                <br />
-                <p>{extension.description}</p>
-                <br />
+                    <br />
+                    <p>{extension.description}</p>
+                    <br />
 
-                <ExtensionSecurity extension={extension} />
+                    <ExtensionSecurity extension={extension} />
 
-                {extension.readmeFileName && extension.readmeContents && (
-                    <>
-                        <h2 className="text-3xl font-bold mt-8">
-                            {extension.readmeFileName}
-                        </h2>
+                    {extension.readmeFileName && extension.readmeContents && (
+                        <>
+                            <h2 className="text-3xl font-bold mt-8">
+                                {extension.readmeFileName}
+                            </h2>
 
-                        <Divider />
+                            <Divider />
 
-                        <div className="prose dark:prose-invert prose-h1:text-2xl prose-h2:text-xl prose-h3:text-lg prose-h4:text-base prose-h5:text-base prose-h6:text-base prose-h6:uppercase">
-                            <MDXRemote
-                                source={extension.readmeContents}
-                                options={{
-                                    mdxOptions: {
-                                        format: "md",
-                                    },
-                                }}
-                            />
-                        </div>
-                    </>
-                )}
-                <Divider />
+                            <div className="prose dark:prose-invert prose-h1:text-2xl prose-h2:text-xl prose-h3:text-lg prose-h4:text-base prose-h5:text-base prose-h6:text-base prose-h6:uppercase">
+                                <MDXRemote
+                                    source={extension.readmeContents}
+                                    options={{
+                                        mdxOptions: {
+                                            format: "md",
+                                        },
+                                    }}
+                                />
+                            </div>
+                        </>
+                    )}
+                    <Divider />
 
-                <p className="text-[#555] dark:text-[#999] text-sm text-center">
-                    Copyright &copy; OSN Inc, {new Date().getFullYear()}. Not
-                    affiliated with Discord, Inc. Copyright of the extensions go
-                    to their respective owners.
-                </p>
-            </main>
-        </div>
+                    <p className="text-[#555] dark:text-[#999] text-sm text-center">
+                        Copyright &copy; OSN Inc, {new Date().getFullYear()}.
+                        Not affiliated with Discord, Inc. Copyright of the
+                        extensions go to their respective owners.
+                    </p>
+                </main>
+            </Container>
+        </>
     );
 }
