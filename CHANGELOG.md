@@ -1,3 +1,12 @@
+## [0.6.1](https://github.com/onesoft-sudo/sudobot-extensions-web/compare/v0.6.0...v0.6.1) (2024-02-08)
+
+
+### Bug Fixes
+
+* update ImageWithSkeleton.tsx ([252357c](https://github.com/onesoft-sudo/sudobot-extensions-web/commit/252357c5af5e529cb3856ca31dcc45c7edf50daf))
+
+
+
 # [0.6.0](https://github.com/onesoft-sudo/sudobot-extensions-web/compare/v0.5.0...v0.6.0) (2024-02-08)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * mui issue with nextjs hydration ([69a2471](https://github.com/onesoft-sudo/sudobot-extensions-web/commit/69a2471ef13ee692b988e368147c5f8c5d172653))
-
-
-
-## [0.4.4](https://github.com/onesoft-sudo/sudobot-extensions-web/compare/v0.4.3...v0.4.4) (2024-02-07)
-
-
-### Bug Fixes
-
-* navbar styles ([629aae1](https://github.com/onesoft-sudo/sudobot-extensions-web/commit/629aae1642a70f16873710c921ab71decc952830))
 
 
 
