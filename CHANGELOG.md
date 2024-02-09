@@ -1,3 +1,12 @@
+## [0.7.1](https://github.com/onesoft-sudo/sudobot-extensions-web/compare/v0.7.0...v0.7.1) (2024-02-09)
+
+
+### Bug Fixes
+
+* build errors ([a1d73d1](https://github.com/onesoft-sudo/sudobot-extensions-web/commit/a1d73d19ad4e942a654986c9f77ea3f801943bb2))
+
+
+
 # [0.7.0](https://github.com/onesoft-sudo/sudobot-extensions-web/compare/v0.6.2...v0.7.0) (2024-02-09)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * extension installation modal ([4948919](https://github.com/onesoft-sudo/sudobot-extensions-web/commit/4948919368674dc013ee9a8af85e6f427c9101c3))
-
-
-
-# [0.5.0](https://github.com/onesoft-sudo/sudobot-extensions-web/compare/v0.4.6...v0.5.0) (2024-02-08)
-
-
-### Features
-
-* extension downloads ([57e35c5](https://github.com/onesoft-sudo/sudobot-extensions-web/commit/57e35c5078aea79932bc9371682b8af76064e0cf))
 
 
 
