@@ -1,3 +1,12 @@
+## [0.7.2](https://github.com/onesoft-sudo/sudobot-extensions-web/compare/v0.7.1...v0.7.2) (2024-02-09)
+
+
+### Bug Fixes
+
+* build errors ([8924a1c](https://github.com/onesoft-sudo/sudobot-extensions-web/commit/8924a1c7cc124e778148ba4e87b1c2e10ccd4c23))
+
+
+
 ## [0.7.1](https://github.com/onesoft-sudo/sudobot-extensions-web/compare/v0.7.0...v0.7.1) (2024-02-09)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * update ImageWithSkeleton.tsx ([252357c](https://github.com/onesoft-sudo/sudobot-extensions-web/commit/252357c5af5e529cb3856ca31dcc45c7edf50daf))
-
-
-
-# [0.6.0](https://github.com/onesoft-sudo/sudobot-extensions-web/compare/v0.5.0...v0.6.0) (2024-02-08)
-
-
-### Features
-
-* extension installation modal ([4948919](https://github.com/onesoft-sudo/sudobot-extensions-web/commit/4948919368674dc013ee9a8af85e6f427c9101c3))
 
 
 
