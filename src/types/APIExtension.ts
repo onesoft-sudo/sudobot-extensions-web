@@ -21,6 +21,8 @@ export interface APIExtension {
     tarballs: Array<Tarballs>;
 }
 
+export type PartialAPIExtension = Pick<APIExtension, 'id' | 'name' | 'author' | 'icon' | 'author' | 'license' | 'description' | 'downloads' | 'security'>
+
 export type Tarballs = {
     url: string;
     checksum: string;

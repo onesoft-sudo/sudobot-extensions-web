@@ -1,12 +1,12 @@
 "use client";
 
-import { APIExtension } from "@/types/APIExtension";
+import { APIExtension, PartialAPIExtension } from "@/types/APIExtension";
 import { FC } from "react";
 import { HiOutlineCube } from "react-icons/hi2";
 import ImageWithSkeleton from "../Image/ImageWithSkeleton";
 
 interface ExtensionIconClientProps {
-    extension: APIExtension;
+    extension: PartialAPIExtension;
 }
 
 const ExtensionIconClient: FC<ExtensionIconClientProps> = ({ extension }) => {

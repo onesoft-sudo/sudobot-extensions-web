@@ -1,5 +1,5 @@
 import Link from "@/components/Routing/Link";
-import { APIExtension } from "@/types/APIExtension";
+import { APIExtension, PartialAPIExtension } from "@/types/APIExtension";
 import { numberFormatter } from "@/utils/formatters";
 import { Tooltip } from "@mui/material";
 import { FC } from "react";
@@ -8,7 +8,7 @@ import ExtensionAuthor from "./ExtensionAuthor";
 import ExtensionIconClient from "./ExtensionIconClient";
 
 interface ExtensionProps {
-    extension: APIExtension;
+    extension: PartialAPIExtension;
 }
 
 const Extension: FC<ExtensionProps> = ({ extension }) => {

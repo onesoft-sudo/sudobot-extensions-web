@@ -1,39 +1,58 @@
-import { APIExtension } from "@/types/APIExtension";
-import { FC } from "react";
+import { INDEX_URL } from "@/config/urls";
+import { getDB } from "@/firebase/app";
+import { PartialAPIExtension } from "@/types/APIExtension";
+import { FC, cache } from "react";
 import Extension from "./Extension";
 
-async function getExtensionIndex(): Promise<APIExtension[]> {
-    // FIXME
-    return [
-        {
-            id: "org.onesoftnet.sbext.antirickroll",
-            downloads: 5,
-            name: "Anti RickRoll",
-            description: "Deletes messages containing rickroll links.",
-            author: {
-                name: "Ar Rakin",
-                isVerified: true,
-            },
-            icon: "https://loremflickr.com/200/200?i=1",
-            license: "GPL-3.0-or-later",
-            licenseURL: "https://spdx.org/licenses/GPL-3.0-or-later.html",
-            security: "safe",
-        },
-        {
-            id: "org.onesoftnet.antirickroll2",
-            downloads: 156666,
-            name: "Anti RickRoll 2",
-            description: "lorem50  lmao",
-            author: {
-                name: "LMAO 11",
-                isVerified: false,
-            },
-            icon: "https://loremflickr.com/200/200?i=2",
-            license: "GPL-3.0-or-later",
-            licenseURL: "https://spdx.org/licenses/GPL-3.0-or-later.html",
-            security: "safe",
-        },
-    ] as TODO;
+const getDocs = cache(async () => {
+    const snapshot = await getDB().collection('extensions').get();
+    const record: Record<string, PartialAPIExtension> = {};
+
+    for (const doc of snapshot.docs) {
+        if (!doc.exists) {
+            continue;
+        }
+
+        record[doc.id] = doc.data() as PartialAPIExtension;
+    }
+
+    return record;
+});
+
+async function getExtensionIndex(): Promise<PartialAPIExtension[]> {
+    const response = await fetch(INDEX_URL, {
+        next: {
+            revalidate: 180
+        }
+    });
+    const extensionMap: Record<string, PartialAPIExtension & { iconURL?: string }> = await response.json();
+    const docs = await getDocs();
+    const extensions = [];
+
+    for (const id in extensionMap) {
+        const doc = docs[id];
+
+        if (!doc) {
+            continue;
+        }
+
+        const extension = {
+            ...extensionMap[id],
+            id,
+            downloads: doc.downloads,
+            security: doc.security,
+            icon: extensionMap[id].iconURL,
+            author: doc.author ? {
+                name: doc.author?.name,
+                github: doc.author.github,
+                isVerified: doc.author?.isVerified
+            } : undefined
+        } satisfies PartialAPIExtension;
+
+        extensions.push(extension);
+    }
+
+    return extensions;
 }
 
 const ExtensionList: FC = async () => {
