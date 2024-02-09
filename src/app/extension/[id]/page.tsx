@@ -22,6 +22,11 @@ export const revalidate = 3600;
 
 const getExtensionDoc = async (id: string) => {
     const db = getDB();
+
+    if (!db) {
+        return { doc: null, data: null }
+    }
+
     const extensionRef = db.collection("extensions").doc(id);
     const doc = await extensionRef.get();
     const data = doc.data();
@@ -52,10 +57,10 @@ async function getExtensionInformation(
     const extensionUpdateTime = new Date(extensionInfo.updatedAt);
     const readmeContents = extensionInfo.readmeFileURL
         ? await fetch(extensionInfo.readmeFileURL, {
-              next: {
-                  revalidate: 180,
-              },
-          }).then((res) => res.text())
+            next: {
+                revalidate: 180,
+            },
+        }).then((res) => res.text())
         : undefined;
 
     return {

@@ -5,7 +5,13 @@ import { FC, cache } from "react";
 import Extension from "./Extension";
 
 const getDocs = cache(async () => {
-    const snapshot = await getDB().collection('extensions').get();
+    const db = getDB()
+
+    if (!db) {
+        return {}
+    }
+
+    const snapshot = await db.collection('extensions').get();
     const record: Record<string, PartialAPIExtension> = {};
 
     for (const doc of snapshot.docs) {
