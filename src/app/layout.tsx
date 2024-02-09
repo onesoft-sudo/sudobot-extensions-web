@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     title: "SudoBot Extensions",
     description:
         "Explore and install officially supported extensions for SudoBot",
-    metadataBase: new URL(process.env.NEXT_PUBLIC_METADATA_BASEURL!),
+    metadataBase: process.env.NEXT_PUBLIC_METADATA_BASEURL ? new URL(process.env.NEXT_PUBLIC_METADATA_BASEURL) : undefined,
 };
 
 export default function RootLayout({
