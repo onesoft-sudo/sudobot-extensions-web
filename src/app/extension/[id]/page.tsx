@@ -18,7 +18,7 @@ import { notFound } from "next/navigation";
 import { HiShieldCheck } from "react-icons/hi2";
 import { MdCheckCircle } from "react-icons/md";
 
-export const revalidate = 3600;
+export const revalidate = 60;
 
 const getExtensionDoc = async (id: string) => {
     const db = getDB();
@@ -38,7 +38,7 @@ async function getExtensionInformation(
 ): Promise<APIExtension | null> {
     const response = await fetch(INDEX_URL, {
         next: {
-            revalidate: 180,
+            revalidate: 60,
         },
     });
     const index = await response.json();
@@ -58,7 +58,7 @@ async function getExtensionInformation(
     const readmeContents = extensionInfo.readmeFileURL
         ? await fetch(extensionInfo.readmeFileURL, {
             next: {
-                revalidate: 180,
+                revalidate: 60,
             },
         }).then((res) => res.text())
         : undefined;
