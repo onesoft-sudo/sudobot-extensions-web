@@ -36,7 +36,7 @@ const getExtensionDoc = async (id: string) => {
 async function getExtensionInformation(
     id: string
 ): Promise<APIExtension | null> {
-    const response = await fetch(INDEX_URL, {
+    const response = await fetch(`${INDEX_URL}?key=${encodeURIComponent(id)}`, {
         next: {
             revalidate: 60,
         },
