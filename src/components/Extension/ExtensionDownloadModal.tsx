@@ -2,11 +2,10 @@
 
 import ExtensionPageState from "@/atoms/ExtensionPageAtom";
 import { APIExtension } from "@/types/APIExtension";
-import { sizeFormatter } from "@/utils/formatters";
 import { Button, Modal } from "@mui/material";
 import { MdClose, MdDownload } from "react-icons/md";
 import { useRecoilState } from "recoil";
-import ExtensionChecksumCopy from "./ExtensionChecksumCopy";
+import ExtensionDownloadsTable from "./ExtensionDownloadsTable";
 
 type Props = {
     extension: APIExtension;
@@ -62,65 +61,16 @@ export default function ExtensionDownloadModal({ extension }: Props) {
                     </p>
                     <br />
 
-                    <div className="relative overflow-x-auto shadow-md sm:rounded-lg mb-5">
-                        <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-[rgba(255,255,255,0.1)] dark:text-gray-400">
-                                <tr>
-                                    <th scope="col" className="px-6 py-3">
-                                        File
-                                    </th>
-                                    <th scope="col" className="px-6 py-3">
-                                        Version
-                                    </th>
-                                    <th scope="col" className="px-6 py-3">
-                                        Size
-                                    </th>
-                                    <th scope="col" className="px-6 py-3">
-                                        Checksum
-                                    </th>
-                                    <th scope="col" className="px-6 py-3">
-                                        Link
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {extension.tarballs.map((tarball) => (
-                                    <tr
-                                        key={tarball.checksum}
-                                        className="odd:bg-white odd:dark:bg-[#333] even:bg-gray-50 even:dark:bg-[rgba(255,255,255,0.13)] border-b dark:border-gray-700"
-                                    >
-                                        <th
-                                            scope="row"
-                                            className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                                        >
-                                            {tarball.basename}
-                                        </th>
-                                        <td className="px-6 py-4">
-                                            {tarball.version}
-                                        </td>
-                                        <td className="px-6 py-4">
-                                            {sizeFormatter.format(tarball.size)}
-                                        </td>
-                                        <td className="px-6 py-4">
-                                            <ExtensionChecksumCopy
-                                                checksum={tarball.checksum}
-                                            />
-                                        </td>
-                                        <td className="px-6 py-4">
-                                            <a
-                                                href={tarball.url}
-                                                target="_blank"
-                                                rel="noreferrer"
-                                                className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                                            >
-                                                Download
-                                            </a>
-                                        </td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
+                    <div className="relative overflow-x-auto shadow-md dark:shadow-none sm:rounded-lg mb-2">
+                        <ExtensionDownloadsTable
+                            tarballs={extension.tarballs}
+                        />
                     </div>
+
+                    <p className="text-xs text-gray-500 dark:text-gray-400 mt-2 mb-5">
+                        <strong>Note:</strong> The checksum is SHA-512. You can
+                        verify the integrity of the file using the checksum.
+                    </p>
 
                     <div className="rounded-b-lg flex justify-end gap-4 p-4 absolute bottom-0 left-0 w-[100%] z-[10000] bg-white dark:bg-[#222] [box-shadow:0_-1px_1px_0_rgba(0,0,0,0.1)] dark:[box-shadow:0_0_1px_0_rgba(255,255,255,0.4)]">
                         <Button onClick={onClose} variant="outlined">
