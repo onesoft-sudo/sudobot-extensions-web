@@ -1,3 +1,13 @@
+# [0.8.0](https://github.com/onesoft-sudo/sudobot-extensions-web/compare/v0.7.3...v0.8.0) (2024-02-22)
+
+
+### Features
+
+* **modals:install:** add instances ([f316e66](https://github.com/onesoft-sudo/sudobot-extensions-web/commit/f316e669694ff5390c7f4e387b311754d8150c43))
+* pagination in downloads modal ([6b8332f](https://github.com/onesoft-sudo/sudobot-extensions-web/commit/6b8332ff4b602bf58af8f51aeec97243c7a2e7e8))
+
+
+
 ## [0.7.3](https://github.com/onesoft-sudo/sudobot-extensions-web/compare/v0.7.2...v0.7.3) (2024-02-15)
 
 
@@ -31,15 +41,6 @@
 ### Features
 
 * dynamic data load on home  page ([849040d](https://github.com/onesoft-sudo/sudobot-extensions-web/commit/849040d68152cd159ee060221e42f2f3cfc19099))
-
-
-
-## [0.6.2](https://github.com/onesoft-sudo/sudobot-extensions-web/compare/v0.6.1...v0.6.2) (2024-02-08)
-
-
-### Bug Fixes
-
-* **navbar:** weird behaviour on mobile ([ae47706](https://github.com/onesoft-sudo/sudobot-extensions-web/commit/ae47706aa1c3ba2093cab2d1310afc4959a5952f))
 
 
 
