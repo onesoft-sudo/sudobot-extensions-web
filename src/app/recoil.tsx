@@ -22,6 +22,7 @@ export default function RecoilProvider({ children }: PropsWithChildren) {
                     ] as LocalStorageSystemInstance[],
                     downloadModalOpen: false,
                     installModalOpen: false,
+                    selectedInstanceIds: [] as string[],
                 });
             }
         }

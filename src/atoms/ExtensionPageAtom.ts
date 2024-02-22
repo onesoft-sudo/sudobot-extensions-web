@@ -17,6 +17,7 @@ const ExtensionPageState = atom({
                 url: "https://whatever.org",
             },
         ] as LocalStorageSystemInstance[],
+        selectedInstanceIds: [] as string[],
     },
 });
 

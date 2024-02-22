@@ -11,7 +11,7 @@ import {
     Stepper,
     Typography,
 } from "@mui/material";
-import { useState } from "react";
+import { FC, useRef, useState } from "react";
 import { MdClose } from "react-icons/md";
 import { useRecoilState } from "recoil";
 import DeployedCodeUpdate from "../Icons/DeployedCodeUpdate";
@@ -29,17 +29,32 @@ const components = [
     () => <p>Finish</p>,
 ];
 
+type NextValidator = () => boolean | Promise<boolean>;
+
+export type StepProps = {
+    setNextValidator: (validator: NextValidator) => void;
+};
+
 export default function ExtensionInstallModal({ extension }: Props) {
     const [state, setState] = useRecoilState(ExtensionPageState);
     const [activeStep, setActiveStep] = useState(0);
     const [skipped, setSkipped] = useState(new Set<number>());
+    const nextValidatorRef = useRef<NextValidator | null>(null);
     const onClose = () => {
-        setState((state) => ({ ...state, installModalOpen: false }));
+        setState((state) => ({
+            ...state,
+            installModalOpen: false,
+            selectedInstanceIds: [],
+        }));
         setActiveStep(0);
         setSkipped(new Set<number>());
     };
 
-    const StepComponent = components[activeStep];
+    const setNextValidator = (validator: NextValidator) => {
+        nextValidatorRef.current = validator;
+    };
+
+    const StepComponent = components[activeStep] as FC<StepProps>;
 
     const isStepOptional = (step: number) => {
         return false;
@@ -49,18 +64,29 @@ export default function ExtensionInstallModal({ extension }: Props) {
         return skipped.has(step);
     };
 
-    const handleNext = () => {
+    const handleNext = async () => {
         let newSkipped = skipped;
+
         if (isStepSkipped(activeStep)) {
             newSkipped = new Set(newSkipped.values());
             newSkipped.delete(activeStep);
         }
 
+        if (nextValidatorRef.current) {
+            const valid = await nextValidatorRef.current();
+
+            if (!valid) {
+                return;
+            }
+        }
+
+        nextValidatorRef.current = null;
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
         setSkipped(newSkipped);
     };
 
     const handleBack = () => {
+        nextValidatorRef.current = null;
         setActiveStep((prevActiveStep) => prevActiveStep - 1);
     };
 
@@ -69,16 +95,13 @@ export default function ExtensionInstallModal({ extension }: Props) {
             throw new Error("You can't skip a step that isn't optional.");
         }
 
+        nextValidatorRef.current = null;
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
         setSkipped((prevSkipped) => {
             const newSkipped = new Set(prevSkipped.values());
             newSkipped.add(activeStep);
             return newSkipped;
         });
-    };
-
-    const handleReset = () => {
-        setActiveStep(0);
     };
 
     return (
@@ -142,18 +165,15 @@ export default function ExtensionInstallModal({ extension }: Props) {
                                 </Typography>
                             </>
                         ) : (
-                            <StepComponent />
+                            <StepComponent
+                                setNextValidator={setNextValidator}
+                            />
                         )}
                     </Box>
 
                     <div className="rounded-b-lg flex justify-end gap-4 p-4 absolute bottom-0 left-0 w-[100%] z-[10000] bg-white dark:bg-[#222] [box-shadow:0_-1px_1px_0_rgba(0,0,0,0.1)] dark:[box-shadow:0_0_1px_0_rgba(255,255,255,0.4)]">
-                        <Button
-                            color="inherit"
-                            disabled={activeStep === 0}
-                            onClick={handleBack}
-                            sx={{ mr: 1 }}
-                        >
-                            Back
+                        <Button color="inherit" onClick={onClose}>
+                            Cancel
                         </Button>
                         <Box sx={{ flex: "1 1 auto" }} />
                         {isStepOptional(activeStep) && (
@@ -165,7 +185,13 @@ export default function ExtensionInstallModal({ extension }: Props) {
                                 Skip
                             </Button>
                         )}
-                        <Button onClick={onClose}>Cancel</Button>{" "}
+                        <Button
+                            disabled={activeStep === 0}
+                            onClick={handleBack}
+                            sx={{ mr: 1 }}
+                        >
+                            Back
+                        </Button>{" "}
                         <Button onClick={handleNext} variant="outlined">
                             {activeStep === steps.length - 1
                                 ? "Finish"

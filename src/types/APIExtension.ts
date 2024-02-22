@@ -18,12 +18,23 @@ export interface APIExtension {
     lastUpdated: Date;
     readmeFileName?: string;
     readmeContents?: string;
-    tarballs: Array<Tarballs>;
+    tarballs: Array<Tarball>;
 }
 
-export type PartialAPIExtension = Pick<APIExtension, 'id' | 'name' | 'author' | 'icon' | 'author' | 'license' | 'description' | 'downloads' | 'security'>
+export type PartialAPIExtension = Pick<
+    APIExtension,
+    | "id"
+    | "name"
+    | "author"
+    | "icon"
+    | "author"
+    | "license"
+    | "description"
+    | "downloads"
+    | "security"
+>;
 
-export type Tarballs = {
+export type Tarball = {
     url: string;
     checksum: string;
     basename: string;

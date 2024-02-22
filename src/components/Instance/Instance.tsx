@@ -1,5 +1,7 @@
+import ExtensionPageState from "@/atoms/ExtensionPageAtom";
 import { LocalStorageSystemInstance } from "@/types/SystemInstance";
 import { Checkbox } from "@mui/material";
+import { useRecoilState } from "recoil";
 import semver from "semver";
 
 type Props = {
@@ -11,6 +13,9 @@ function getVersion(url: string) {
 }
 
 export default function Instance({ instance }: Props) {
+    const [state, setState] = useRecoilState(ExtensionPageState);
+
+    // FIXME
     const version =
         "version" in instance && typeof instance.version === "string"
             ? instance.version
@@ -39,7 +44,22 @@ export default function Instance({ instance }: Props) {
                     )}
                 </p>
             </div>
-            <Checkbox disabled={!compatible} />
+            <Checkbox
+                disabled={!compatible}
+                onChange={(e) =>
+                    setState((s) => {
+                        return {
+                            ...s,
+                            selectedInstanceIds: e.target.checked
+                                ? [...s.selectedInstanceIds, instance.id]
+                                : s.selectedInstanceIds.filter(
+                                      (id) => id !== instance.id
+                                  ),
+                        };
+                    })
+                }
+                checked={state.selectedInstanceIds.includes(instance.id)}
+            />
         </div>
     );
 }
