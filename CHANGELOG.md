@@ -1,3 +1,12 @@
+## [0.8.1](https://github.com/onesoft-sudo/sudobot-extensions-web/compare/v0.8.0...v0.8.1) (2024-08-18)
+
+
+### Bug Fixes
+
+* broken links ([933c38f](https://github.com/onesoft-sudo/sudobot-extensions-web/commit/933c38f6bb5ae16bae5a2f65765e515483e763a8))
+
+
+
 # [0.8.0](https://github.com/onesoft-sudo/sudobot-extensions-web/compare/v0.7.3...v0.8.0) (2024-02-22)
 
 
@@ -32,15 +41,6 @@
 ### Bug Fixes
 
 * build errors ([a1d73d1](https://github.com/onesoft-sudo/sudobot-extensions-web/commit/a1d73d19ad4e942a654986c9f77ea3f801943bb2))
-
-
-
-# [0.7.0](https://github.com/onesoft-sudo/sudobot-extensions-web/compare/v0.6.2...v0.7.0) (2024-02-09)
-
-
-### Features
-
-* dynamic data load on home  page ([849040d](https://github.com/onesoft-sudo/sudobot-extensions-web/commit/849040d68152cd159ee060221e42f2f3cfc19099))
 
 
 
