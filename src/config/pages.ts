@@ -4,7 +4,7 @@ export const pages = [
         name: "Home",
     },
     {
-        url: "https://docs.sudobot.org",
+        url: "https://docs.sudobot.onesoftnet.eu.org",
         name: "Docs",
     },
     {
@@ -12,7 +12,7 @@ export const pages = [
         name: "Explore",
     },
     {
-        url: "https://www.sudobot.org",
+        url: "https://sudobot.onesoftnet.eu.org",
         name: "Dashboard",
     },
 ];
